@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 //import { useAppDispatch, useAppSelector } from '../reduxToolkit/hooks';
+import TodoCard from '../components/templates/todos/TodoCard/TodoCard';
 import { useGetAllQuery } from '../reduxToolkit/apis/todos.api';
 
 const Home: NextPage = () => {
@@ -11,12 +12,10 @@ const Home: NextPage = () => {
 
   if (isSuccess) {
     return (
-      <div>
-        <ul>
-          {data.map((todo) => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
-        </ul>
+      <div className="w-[520px] mx-auto my-6">
+        {data.map((todo) => (
+          <TodoCard todo={todo} key={todo.id} />
+        ))}
       </div>
     );
   }

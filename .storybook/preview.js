@@ -1,5 +1,5 @@
 import * as NextImage from 'next/image';
-import '../styles/globals.css';
+import '../pages/globals.css';
 
 // Ensure these match with tailwind.config.js
 // const BREAKPOINTS_INT = {
@@ -42,5 +42,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  viewport: { viewports: customViewports },
+  //viewport: { viewports: customViewports },
 };
