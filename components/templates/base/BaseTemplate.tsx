@@ -4,14 +4,36 @@ import { FC } from 'react';
 
 export interface IBaseTemplate {
   sampleTextProp: string;
+  tlwStyle?: string | Record<string, string>;
 }
 
-const BaseTemplate: FC<IBaseTemplate> = ({ sampleTextProp }) => {
+const BaseTemplate: FC<IBaseTemplate> = ({ sampleTextProp, tlwStyle }) => {
   return (
-    <div className="bg-black text-white rounded-lg flex content-center items-center p-8">
+    <div
+      className={`rounded-lg flex content-center items-center p-8 ${
+        tlwStyle && tlwStyle
+      }`}
+    >
       {sampleTextProp}
     </div>
   );
 };
 
 export default BaseTemplate;
+
+// import { FC, PropsWithChildren } from 'react';
+// import styles from './BaseTemplate.module.css';
+
+// export interface IBaseTemplate {
+//   sampleTextProp: string;
+// }
+
+// const BaseTemplateWithChildren: FC<PropsWithChildren<IBaseTemplate>> = ({
+//   sampleTextProp, tlwStyle
+// }) => {
+//   return <div className={`rounded-lg flex content-center items-center p-8 ${
+//        tlwStyle && tlwStyle
+//      }`}>{sampleTextProp}</div>;
+// };
+
+// export default BaseTemplateWithChildren;

@@ -19,10 +19,12 @@ export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Base.args = {
   ...mockBaseTemplateProps.base,
+  tlwStyle: 'bg-black text-white',
 } as IBaseTemplate;
 
 // Second story
 export const AltBase = Template.bind({});
 AltBase.args = {
   ...mockBaseTemplateProps.altBase,
+  tlwStyle: 'bg-zinc-400 text-yellow-800',
 } as IBaseTemplate;
