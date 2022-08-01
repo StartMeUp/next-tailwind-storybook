@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
+// OPTIONAL: you can still use css modules
 import styles from './CatCard.module.css';
 
 export interface ICatCard {

@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   /** Expose public folder to storybook as static */
@@ -7,12 +9,18 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
+
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
-  },
-  features: {
-    interactionsDebugger: true,
   },
 };
