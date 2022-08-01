@@ -1,14 +1,27 @@
 import type { NextPage } from 'next';
-import CatCard from '../components/templates/cat/CatCard';
-import { mockCatCardProps } from '../components/templates/cat/CatCard.mocks';
+//import { useAppDispatch, useAppSelector } from '../reduxToolkit/hooks';
+import { useGetAllQuery } from '../reduxToolkit/apis/todos.api';
 
 const Home: NextPage = () => {
-  return (
-    <div className="bg-green-100">
-      <h1 className="text-xl text-blue-500">This is the Home page</h1>
-      <CatCard {...mockCatCardProps.base} />
-    </div>
-  );
+  const { data, error, isLoading, isSuccess } = useGetAllQuery(null);
+
+  if (isLoading) return <div>Loading data ...</div>;
+
+  if (error) return <div>An error has occured: {JSON.stringify(error)}</div>;
+
+  if (isSuccess) {
+    return (
+      <div>
+        <ul>
+          {data.map((todo) => (
+            <li key={todo.id}>{todo.title}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  return <div>An unknown error has occured</div>;
 };
 
 export default Home;
