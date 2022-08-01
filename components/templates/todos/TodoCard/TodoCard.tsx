@@ -1,5 +1,7 @@
 import { FC } from 'react';
 import type { Todo } from '../../../../reduxToolkit/apis/todos.api';
+import { useAppDispatch } from '../../../../reduxToolkit/hooks';
+import { updateTodoComplete } from '../../../../reduxToolkit/slices/todos.slice';
 import { DeleteButton } from '../Button/Button.stories';
 
 export interface ITodoCard {
@@ -8,6 +10,7 @@ export interface ITodoCard {
 }
 
 const TodoCard: FC<ITodoCard> = ({ todo, tlwStyle }) => {
+  const dispatch = useAppDispatch();
   return (
     <div
       className={`flex justify-between items-center my-2 border rounded p-2 ${
@@ -16,7 +19,11 @@ const TodoCard: FC<ITodoCard> = ({ todo, tlwStyle }) => {
     >
       <span>{todo.title}</span>
       <div className="ml-2 flex items-center">
-        <input type="checkbox" defaultChecked={todo.completed} />
+        <input
+          type="checkbox"
+          defaultChecked={todo.completed}
+          onChange={() => dispatch(updateTodoComplete(todo.id))}
+        />
         <DeleteButton text="Delete" tlwStyle="bg-orange-200 ml-2" />
       </div>
     </div>
