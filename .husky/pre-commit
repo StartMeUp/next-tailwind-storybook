@@ -2,3 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn lint
+npx depcheck --ignores="eslint,babel-*,webpack,tailwindcss,@storybook/*,storybook-*,@commitlint/*,@types/node,autoprefixer,jest,util"
