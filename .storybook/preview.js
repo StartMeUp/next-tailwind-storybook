@@ -1,5 +1,7 @@
 import * as NextImage from 'next/image';
+import { Provider } from 'react-redux';
 import '../pages/globals.css';
+import { store } from '../reduxToolkit/store';
 
 // Ensure these match with tailwind.config.js
 // const BREAKPOINTS_INT = {
@@ -44,3 +46,11 @@ export const parameters = {
   },
   //viewport: { viewports: customViewports },
 };
+
+export const decorators = [
+  (Story) => (
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  ),
+];
